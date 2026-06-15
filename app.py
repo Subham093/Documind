@@ -101,16 +101,6 @@ with st.sidebar:
         st.session_state.chat_history = []
         st.rerun()
 
-    if st.button("🗑️ Clear Database"):
-        if os.path.exists(PERSIST_DIR):
-            shutil.rmtree(PERSIST_DIR)
-            st.session_state.vector_store = None
-            st.session_state.chat_history = []
-            st.success("Database cleared!")
-            st.rerun()
-
-    
-
 # 5. RAG LOGIC (The Clean Way)
 def get_response(user_query, vector_store):
     # Contextualize question: LLM re-writes the question to include history context
